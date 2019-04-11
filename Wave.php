@@ -281,15 +281,6 @@ class Wave
             $bitsPerSample = current(unpack('v', fread($fh, 2)));
             $chunk->setBitsPerSample($bitsPerSample);
         }
-        if ($size >= 18) {
-            $extensionSize = current(unpack('v', fread($fh, 2)));
-            $chunk->setExtensionSize($extensionSize);
-        }
-        if ($size >= 20) {
-            $extensionData = fread($fh, $extensionSize);
-            $chunk->setExtensionData($extensionData);
-        }
-
     }
 
     /**
